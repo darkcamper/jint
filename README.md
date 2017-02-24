@@ -1,4 +1,6 @@
-[![Build status](http://teamcity.codebetter.com/app/rest/builds/buildType:(id:Jint_Master)/statusIcon)](http://teamcity.codebetter.com/project.html?projectId=Jint&tab=projectOverview)
+[![Build status](https://ci.appveyor.com/api/projects/status/xh2lsliy6usk60o5?svg=true)](https://ci.appveyor.com/project/SebastienRos/jint)
+[![NuGet](https://img.shields.io/nuget/v/Jint.svg)](https://www.nuget.org/packages/Jint)
+[![Join the chat at https://gitter.im/sebastienros/jint](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sebastienros/jint)
 
 # Jint
 
@@ -10,11 +12,11 @@ Jint is a __Javascript interpreter__ for .NET which provides full __ECMA 5.1__ c
 - .NET Portable Class Library - http://msdn.microsoft.com/en-us/library/gg597391(v=vs.110).aspx
 - .NET Interoperability 
 
+> ECMAScript 6.0 currently being implemeted, see https://github.com/sebastienros/jint/issues/343
+
 # Discussion
 
-[![Join the chat at https://gitter.im/sebastienros/jint](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sebastienros/jint)
-
-Or post your questions with the `jint` tag on [stackoverflow](http://stackoverflow.com/questions/tagged/jint).
+Join the chat on [Gitter](https://gitter.im/sebastienros/jint) or post your questions with the `jint` tag on [stackoverflow](http://stackoverflow.com/questions/tagged/jint).
 
 # Examples
 
@@ -100,6 +102,14 @@ and then to assign local namespaces the same way `System` does it for you, use `
     jint> var bar = new Foo.Bar();
     jint> log(bar.ToString());
 ```    
+adding a specific CLR type reference can be done like this
+```csharp
+engine.SetValue("TheType", TypeReference.CreateTypeReference(engine, typeof(TheType)))
+```
+and used this way
+```javascript
+    jint> var o = new TheType();
+```
 Generic types are also supported. Here is how to declare, instantiate and use a `List<string>`:
 ```javascript
     jint> var ListOfString = System.Collections.Generic.List(System.String);
@@ -151,6 +161,5 @@ This example is using French as the default culture.
   - Regex -> RegExp
   - Function -> Delegate
 
-Continuous Integration kindly provided by  
-[![](http://www.jetbrains.com/img/banners/Codebetter300x250.png)](http://www.jetbrains.com/teamcity)
+Continuous Integration kindly provided by  [AppVeyor](https://www.appveyor.com)
 
